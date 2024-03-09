@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Delete.jpg" />
+    <None Remove="Done.png" />
+    <None Remove="EmptyHeart.jpg" />
+    <None Remove="Next.png" />
+    <None Remove="RedHeart.png" />
+    <None Remove="Searh.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Delete.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySqlConnector" Version="2.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Done.png" />
+    <Resource Include="EmptyHeart.jpg" />
+    <Resource Include="Next.png" />
+    <Resource Include="RedHeart.png" />
+    <Resource Include="Searh.png" />
+  </ItemGroup>
+
+</Project>

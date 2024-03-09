@@ -1,0 +1,149 @@
+﻿<Window x:Class="MyDictionary.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.com/wpf"
+        xmlns:local="clr-namespace:MyDictionary"
+        mc:Ignorable="d"
+        Title="MY VOCABULARY" WindowState="Maximized" d:DesignHeight="800.158" d:DesignWidth="1454.667"
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow">
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#FF080708" Offset="0.0"/>
+            <GradientStop Color="#FF16332F" Offset="1.0"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+
+        <StackPanel x:Name="wordStackPanel" Margin="0,0,0,0">
+            <Label Content="MY DICTIONARY"  FontFamily="Algerian" FontSize="72" Foreground="LawnGreen" FontWeight="Bold"/>
+            <Grid>
+                <Label Foreground="LawnGreen" Margin="20,40,0,0" FontSize="20" FontFamily="Bahnschrift Light" FontWeight="Bold">SEARCH</Label>
+                <TextBox x:Name="tbSearch" Width="280" Height="30" VerticalAlignment="top" HorizontalAlignment="Left" Margin="30, 80, 0, 0" FontSize="16" FontFamily="Arial" FontWeight="Bold"></TextBox>
+                <Grid Height="500" Margin="20,80,500,20">
+                    <Grid Margin="0,0,505,0">
+                        <Border BorderThickness="1" BorderBrush="DarkCyan" Padding="10" HorizontalAlignment="Left" Margin="0,50,0,0" Width="364">
+                            <StackPanel Width="350" HorizontalAlignment="Left" Margin="0,0,0,20">
+                                <Label Content="WORDS" Foreground="LawnGreen" FontFamily="Algerian" FontSize="22" FontWeight="Bold" RenderTransformOrigin="0.502,1.025" Height="41"></Label>
+                                <ComboBox x:Name="cbLetters" Width="50" HorizontalAlignment="Right" Margin="0,0,10,0" SelectionChanged="Sort"/>
+                                <ListBox x:Name="lbVocabulary" Width="344" Height="324" Margin="0,20,0,0" Background="LightGreen" AlternationCount="2" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Bahnschrift Light" FontSize="14" FontWeight="UltraBlack">
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="Background" Value="#FF9FCCA3" />
+                                            <Style.Triggers>
+                                                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                                    <Setter Property="Background" Value="LightGreen" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding}" Margin="5"/>
+                                                <Button Name="heartButton" Width="30" Height="30" Click="HeartButtonClick">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image x:Name="buttonImage" Source="/EmptyHeart.jpg"/>
+                                                        <TextBlock Text="Click me"/>
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Name="deleteButton" Width="30" Height="30" Click="DeleteButtonClick">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image x:Name="deleteButtonImage" Source="/Delete.jpg"/>
+                                                        <TextBlock Text="Click me"/>
+                                                    </StackPanel>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+
+                            </StackPanel>
+                        </Border>
+                        <Button HorizontalAlignment="Left" Margin="295,0,0,0" VerticalAlignment="Top" Height="30" Width="30" Click="Search" DragEnter="Search" >
+                            <Image Source="/Searh.png"></Image>
+                        </Button>
+                    </Grid>
+                    <StackPanel Width="600" HorizontalAlignment="Right" Margin="0, 20,0,0">
+                        <Grid Height="469">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="21*"/>
+                                <RowDefinition Height="223*"/>
+                                <RowDefinition Height="244*"/>
+                            </Grid.RowDefinitions>
+                            <Border BorderThickness="1" BorderBrush="DarkCyan" Padding="10" Margin="-9,31,0,-11" Grid.RowSpan="3">
+                                <StackPanel Width="550" HorizontalAlignment="Center" Margin="0,20,0,20">
+                                    <Label Content="IDIOMS" Foreground="LawnGreen" FontFamily="Algerian" FontSize="22" FontWeight="Bold"></Label>
+                                    <ListBox x:Name="lbIdioms" Width="550" Height="328" Margin="0,20,0,0" Background="LightGreen" AlternationCount="2" ScrollViewer.VerticalScrollBarVisibility="Visible" FontWeight="UltraBlack" FontFamily="Bahnschrift Light">
+                                        <ListBox.ItemContainerStyle>
+                                            <Style TargetType="ListBoxItem">
+                                                <Setter Property="Background" Value="#FF9FCCA3" />
+                                                <Style.Triggers>
+                                                    <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                                        <Setter Property="Background" Value="LightGreen" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding}" Margin="5"/>
+                                                    <Button Name="heartButton" Width="30" Height="30" 
+                                                            Click="HeartButtonClick">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image x:Name="buttonImage" Source="/EmptyHeart.jpg"/>
+                                                        <TextBlock Text="Click me"/>
+                                                    </StackPanel>
+                                                    </Button>
+                                                    <Button Name="deleteButton" Width="30" Height="30" Click="DeleteButtonClick">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image x:Name="deleteButtonImage" Source="/Delete.jpg"/>
+                                                            <TextBlock Text="Click me"/>
+                                                        </StackPanel>
+                                                    </Button>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Height="180" Margin="0,140,200,0">
+                    <Border BorderThickness="1" BorderBrush="DarkCyan" Padding="10,10,10,0">
+                        <StackPanel RenderTransformOrigin="0.511,0.536">
+                            <Label FontFamily="Bahnschrift Condensed" HorizontalAlignment="Center" FontSize="30" Foreground="LawnGreen">
+                                NEW WORDS:
+                            </Label>
+                            <Label x:Name="lbWordOfDay" FontFamily="Bahnschrift Condensed" HorizontalAlignment="Center" FontSize="20" Foreground="DarkCyan"></Label>
+                            
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="340" Height="200" Margin="0,0,60,60">
+                    <Border BorderThickness="1" BorderBrush="DarkCyan" Padding="10,10,10,10">
+                        <StackPanel>
+                            <Label HorizontalAlignment="Center" FontFamily="Bahnschrift Condensed" FontSize="30" Foreground="LawnGreen" FontStyle="Italic" FontWeight="Bold">
+                                NEW IDIOMS:
+                            </Label>
+
+                            <Label x:Name="lbIdiomOfDay" HorizontalAlignment="Center" FontFamily="Bahnschrift Condensed" FontSize="20" Foreground="DarkCyan"></Label>
+
+                            
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Label Content="Label" HorizontalAlignment="Left" Margin="70,55,0,0" VerticalAlignment="Top"/>
+            </Grid>
+            <Button Margin="20,20,20,0" Background="LawnGreen" FontWeight="Bold" FontFamily="Bahnschrift" FontSize="20" Click="StartLearning" >START LEARNING NOW</Button>
+        </StackPanel>
+
+
+
+    </Grid>
+</Window>
